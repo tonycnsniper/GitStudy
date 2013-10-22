@@ -11,9 +11,10 @@ using NUnit.Framework;
 namespace MoqStudy
 {
     [TestClass]
-    public class CalculatorAddTest
+    public class CalculatorTest
     {
         Mock<IAdd> addMock;
+        Mock<ISubstract> subStract;
         AutoMoq.AutoMoqer mocker;
 
         [SetUp]
@@ -39,7 +40,14 @@ namespace MoqStudy
         [TestMethod]
         public void Abstract_SimpleAbstract_Return()
         {
+            mocker = new AutoMoqer();
+            subStract = mocker.GetMock<ISubstract>();
 
+            subStract.Setup(x => x.GetResult()).Returns(4);
+            Calculator s = new Calculator(subStract.Object);
+            int sub = s.
+
+            subStract.Verify(x => x.GetResult(), Times.Once);
         }
 
     }

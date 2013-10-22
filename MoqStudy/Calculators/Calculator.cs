@@ -13,6 +13,7 @@ namespace Calculators
 
         }
         private IAdd _add;
+        private ISubstract _sub;
 
         public Calculator(IAdd add)
         {
@@ -23,6 +24,11 @@ namespace Calculators
         {
 
             return _add.GetResult();
+        }
+
+        public int Substract()
+        {
+            return 
         }
     }
 }
