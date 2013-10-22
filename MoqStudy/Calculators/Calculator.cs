@@ -15,9 +15,30 @@ namespace Calculators
         private IAdd _add;
         private ISubstract _sub;
 
-        public Calculator(IAdd add)
+        public IAdd SetAdd
         {
-            _add = add;
+            get 
+            {
+                return _add;
+            }
+
+            set 
+            {
+                _add = value;
+            }
+        }
+
+        public ISubstract SetSub 
+        {
+            get
+            {
+                return _sub;
+            }
+            set
+            {
+                _sub = value;
+            }
+        
         }
 
         public int Sum()
@@ -28,7 +49,7 @@ namespace Calculators
 
         public int Substract()
         {
-            return 
+            return _sub.GetResult();
         }
     }
 }

@@ -30,7 +30,8 @@ namespace MoqStudy
             addMock = mocker.GetMock<IAdd>();
             addMock.Setup(x => x.GetResult()).Returns(5);
 
-            Calculator c = new Calculator(addMock.Object);
+            Calculator c = new Calculator();
+            c.SetAdd = addMock.Object;
             int sum = c.Sum();
             
             
@@ -44,10 +45,11 @@ namespace MoqStudy
             subStract = mocker.GetMock<ISubstract>();
 
             subStract.Setup(x => x.GetResult()).Returns(4);
-            Calculator s = new Calculator(subStract.Object);
-            int sub = s.
+            Calculator s = new Calculator();
+            s.SetSub = subStract.Object;
+            int sub = s.Substract();
 
-            subStract.Verify(x => x.GetResult(), Times.Once);
+            subStract.Verify(l => l.GetResult(), Times.Once());
         }
 
     }
