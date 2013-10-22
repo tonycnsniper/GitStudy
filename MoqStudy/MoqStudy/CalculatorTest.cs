@@ -28,7 +28,7 @@ namespace MoqStudy
         {
             mocker = new AutoMoqer();
             addMock = mocker.GetMock<IAdd>();
-            addMock.Setup(x => x.GetResult()).Returns(5);
+            addMock.Setup(x => x.GetResult()).Returns(2);
 
             Calculator c = new Calculator();
             c.SetAdd = addMock.Object;
@@ -49,7 +49,7 @@ namespace MoqStudy
             s.SetSub = subStract.Object;
             int sub = s.Substract();
 
-            subStract.Verify(l => l.GetResult(), Times.Once());
+            subStract.Verify(l => l.GetResult(), Times.Exactly(2));
         }
 
     }
