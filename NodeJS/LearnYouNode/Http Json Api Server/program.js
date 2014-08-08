@@ -3,22 +3,22 @@ var url = require('url')
 
 var server = http.createServer(function(request, response) {
 	var queryStr = url.parse(request.url, true)
-	
+	var data = {}
+	var date = new Date(Date.parse(queryStr.query.iso))
+	if(date === null)
+		date = new Date()
 	if(queryStr.pathname === '/api/parsetime') {
-		var date = new Date()
-		var obj = {
+		data = {
 			"hour" : date.getHours(),
 			"minute" : date.getMinutes(),
 			"second" : date.getSeconds()
 		}
 	}
 	else if(queryStr.pathname === '/api/unixtime') {
-		var date = new Date(UNIX_timestamp)
-		var obj = {
-			"unixtime" : date.toString()
+		data = {
+			"unixtime" : date.getTime()
 		}
 	}
-
 	response.writeHead(200, { 'Content-Type' : 'application/json' })
-	response.write(obj.toString())
+	response.write(JSON.stringify(data))
 }).listen(process.argv[2])
