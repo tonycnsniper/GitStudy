@@ -1,9 +1,26 @@
 var express = require('express');
 var app = express();
+var nodemailer = require('nodemailer');
+var MemoryStore = require('connect').session.MemoryStore;
+
+var mongoose = require('mongoose');
+
+var config = {
+	mail: require('mail')
+};
+
+var Account = require('./models/Account')(config, mongoose, nodemailer);
 
 app.configure(function(){
 	app.set('view engine', 'jade');
 	app.use(express.static(__dirname + '/public'));
+	app.use(express.limit('1mb'));
+	app.use(express.bodyParser());
+	app.use(express.cookieParser());
+	app.use(express.session(
+		{secret: "SocialNet secret key", store: new MemoryStore()}
+		));
+	mongoose.connect('mongodb://localhost/nodebackbone');
 });
 
 app.get('/', function(req, res){
