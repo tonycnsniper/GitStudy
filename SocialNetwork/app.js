@@ -113,4 +113,25 @@ app.get('/accounts/:id', function(req, res) {
 	});
 });
 
+app.get('/accounts/:id/status', function(req, res){
+	var accountId = req.params.id == 'me'
+						? req.session.accountId
+						: req.params.id;
+	models.Account.findById(accountId, function(account) {
+		status = {
+			name : account.name,
+			status : req.param('status', '')
+		};
+		account.status.push(status);
+
+		account.activity.push(status);
+		account.save(function (err) {
+			if(err) {
+				console.log('Error saving account: ' + err);
+			}
+		});
+	});
+	res.send(200);
+});
+
 app.listen(8080);
