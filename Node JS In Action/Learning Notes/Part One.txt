@@ -1,0 +1,8 @@
+1. Asynchronous thread used by Node.Js. 
+	Not like single thread program operation that I/O would block everything until it done, it would work multithread base, just like throw plate to further place, you could do another things before plate come back. This would mean that code can process other things and will not wait for I/O pending, it would handle finished thread when plate come back. It is very different from single thread programming code. Just play with only one plate, but now you can buy more plate and throw them at further place. 
+
+2. DIRTy model:
+	Data-Intense Run-Time application. 
+
+3. Streaming. 
+	when plate come back again, call back functino will be executed again. Just like a boy who is listenning to girls' talking, he will repeat what she said whenever he heard.
