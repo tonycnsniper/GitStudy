@@ -1,0 +1,29 @@
+
+/******************
+***Reqirement
+******************/
+
+	who do(what) with who by(how) 
+1. allow : user chat - each other - enter message - form 
+2. allow : user given a guest name - change - by command (/)
+3. allow : user create a new chat room by comand ()
+4. allow : user join a room. then a new member name shown at top 
+5. allow : user view list of available rooms at right of chat form  
+
+
+
+/*****************
+***Design
+*****************/
+
+browser :
+
+HTML, CSS, Javascript
+
+HTML:    Input box : collection chat message and command which include create rooms and change name
+	Message form : show chat message and new member welcome message. 
+	Available List : list  rooms
+
+server: 
+	Handle : receive input message from client and create new rooms and change name
+	Send Message Back to server : response for client
