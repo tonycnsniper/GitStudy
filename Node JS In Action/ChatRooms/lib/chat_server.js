@@ -18,7 +18,7 @@ exports.listen = function(server) {
 		handleRoomJoining(socket);
 
 		socket.on('rooms', function() {
-			socket.emit('room', io.sockets.manager.rooms);
+			socket.emit('rooms', io.sockets.manager.rooms);
 		});
 
 		handleClientDisconnection(socket, nickNames, namesUsed);

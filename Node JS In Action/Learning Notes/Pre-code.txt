@@ -27,3 +27,12 @@ HTML:    Input box : collection chat message and command which include create ro
 server: 
 	Handle : receive input message from client and create new rooms and change name
 	Send Message Back to server : response for client
+
+
+Server: logic included:
+	Guest name assignment:
+	Name change request:
+	Room change request:
+	Sendding chat message:
+	Room creation
+	User disconnection:
