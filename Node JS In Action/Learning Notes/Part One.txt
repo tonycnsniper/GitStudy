@@ -6,3 +6,9 @@
 
 3. Streaming. 
 	when plate come back again, call back functino will be executed again. Just like a boy who is listenning to girls' talking, he will repeat what she said whenever he heard.
+
+
+
+Node Programming Fundamental: 
+	1. exports and module.exports : are different. just like exports = module.exports.exports, so it can not be accessed any other object, func, properties
+	2. call back and event listener. on or emit.
