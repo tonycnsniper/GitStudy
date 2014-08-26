@@ -12,3 +12,7 @@
 Node Programming Fundamental: 
 	1. exports and module.exports : are different. just like exports = module.exports.exports, so it can not be accessed any other object, func, properties
 	2. call back and event listener. on or emit.
+
+	3. execution sequence : serial and Parallel
+		serial: put all needed task in specified array in order, which will be executed one by one.
+		parallel: also put in one array, but do not care order. each of task will call a handler. 
