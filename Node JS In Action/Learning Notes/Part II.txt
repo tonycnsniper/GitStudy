@@ -1,0 +1,4 @@
+1. how to create http Hello World sample: require http, call back included function(req, res), need to listen to specified port
+2. RESTfull service, GET, PUT, POST, DELETE. they are existed in request.method.
+3. node core, community module, application layer. 
+4. Https. create a key and generate certificate from key. 
