@@ -1,0 +1,8 @@
+{
+	"name" : "Uploader",
+	"version" : "0.0.1",
+	"description" :	"Just a learning apps",
+	"dependencies" : {
+		"mime" : "~1.2.7"
+	}
+}
