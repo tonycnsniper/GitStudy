@@ -8,12 +8,19 @@
 <body>
 	<div id='header'>Uploadder</div>
 	<div id='content'>
-		<input type='text'/>
+		<!-- <input type='text'/>
 		
 		<a href="#" class="button gray">
 			<input type='file' tabIndex="-1"/>			
 			<div id="status">Browse</div>
-		</a>
+		</a> -->
+
+		<form method="post" action="/" enctype="multipart/form-data">
+			<input type="text" name="name"/>
+			<input type="file" name="file"/>
+			<a href="#" class="button green">Browse</a>
+			<input class="button blue" type="submit" name="Upload" value="Upload">
+		</form>
 	</div>
 	<div id='footer'>Created By Tony Chao</div>
 	<script type="text/javascript" src="/js/jquery.js"></script>

@@ -5,6 +5,12 @@ var cache = {}
 var fs = require('fs')
 
 var server = http.createServer(function(req,res) {
+	if(req.method == 'POST') {
+		upload(req, res)
+	}
+
+
+
 	var filePath = false;
 	if(req.url == '/') {
 		filePath = 'public/index.html'
@@ -55,5 +61,8 @@ function sendFile(response, fileContent, filePath) {
 	response.end(fileContent)
 } 
 
+function upload(request, response) {
+	
+}
 
 server.listen(8000);
