@@ -24,3 +24,26 @@ requirement No.1: browser file located on client and select file
 	Function 3: 
 		   #1use val() (jQuery) 
 		   #2 refer to event handle to set name for page.
+
+
+App Server:
+	handle request 
+		request.GET:
+			show message:
+				what: file list/ <ul> or <li>.
+				how: index.html
+				when: handle get request.
+				who: client send url request.
+		request.POST:
+			add file ready to upload:
+				what: 
+				how:
+				when:
+				who:
+			
+	return response
+
+Client JS:
+Server JS:
+
+Server JS:
