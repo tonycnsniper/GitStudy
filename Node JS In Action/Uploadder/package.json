@@ -3,6 +3,7 @@
 	"version" : "0.0.1",
 	"description" :	"Just a learning apps",
 	"dependencies" : {
-		"mime" : "~1.2.7"
+		"mime" : "~1.2.7",
+		"formidable" : "~1.0.15"
 	}
 }

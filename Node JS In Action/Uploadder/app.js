@@ -1,16 +1,11 @@
 var http = require('http')
 var mime = require('mime')
 var path = require('path')
+var formidable = require('formidable')
 var cache = {}
 var fs = require('fs')
 
 var server = http.createServer(function(req,res) {
-	if(req.method == 'POST') {
-		upload(req, res)
-	}
-
-
-
 	var filePath = false;
 	if(req.url == '/') {
 		filePath = 'public/index.html'
@@ -19,7 +14,11 @@ var server = http.createServer(function(req,res) {
 	}
 
 	var absPath = './' + filePath
-	serverStatic(res, filePath, cache)
+	if(req.method == 'POST') {
+		upload(req, res)
+	} else {
+		serverStatic(res, filePath, cache)
+	}	
 })
 
 function serverStatic(response, filePath, cache) {
@@ -47,7 +46,6 @@ function serverStatic(response, filePath, cache) {
 
 		})
 	}
-
 }
 
 function serverError(response, errorCode) {
@@ -62,7 +60,43 @@ function sendFile(response, fileContent, filePath) {
 } 
 
 function upload(request, response) {
-	
+	if(!isFormData(request)) {
+		serverError(response,400)
+		return
+	}
+
+	var form = new formidable.IncomingForm();
+
+	form.on('field', function(field, value) {
+		console.log(field);
+		console.log(value);
+	});
+
+	form.on('file', function(name, file){
+		console.log(name);
+		console.log(file);
+		console.log("read file starting...");
+	});
+
+	form.on('end', function() {
+		response.end('upload complete!')
+	});
+
+	form.parse(request, function(err, fields, files){
+		console.log(fields);
+		console.log(files);
+		response.end('upload complete!');
+	});
+
+	form.on('progress', function(bytesReceived, bytesExpected){
+		var percent = Math.floor(bytesReceived / bytesExpected * 100);
+		console.log(percent);
+	});
+}
+
+function isFormData(request) {
+	var type = request.headers['content-type'] || '';
+	return type.indexOf('multipart/form-data') == 0;
 }
 
 server.listen(8000);

@@ -29,14 +29,15 @@ input[type="submit"] {
 
 
 input[type='file'] {
+    top: 0px;
+    left: 0px;
     font-size: 22px;
     opacity: 0;
     position: absolute;
     cursor: pointer;
-    width: 90px;
-    margin: 10px 10px 10px 10px;
+    width: 86px;
+    height: 25px;
 }
-
 
 /*media screen*/
 .button:hover {
