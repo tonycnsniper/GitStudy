@@ -36,10 +36,10 @@ App Server:
 				who: client send url request.
 		request.POST:
 			add file ready to upload:
-				what: 
-				how:
-				when:
-				who:
+				what: request.method == post
+				how: parse(request)
+				when: handle event
+				who: app.js tracker listener
 			
 	return response
 
