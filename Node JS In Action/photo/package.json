@@ -1,9 +1,9 @@
 {
   "name": "photo",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "express": "~4.8.6",
@@ -12,6 +12,6 @@
     "morgan": "~1.2.3",
     "serve-favicon": "~2.0.1",
     "debug": "~1.0.4",
-    "ejs": "^0.8.8"
+    "ejs": "~0.8.5"
   }
 }
