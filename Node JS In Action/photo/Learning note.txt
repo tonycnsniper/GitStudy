@@ -3,3 +3,16 @@
 	package.json contains modules dependencies ,boot.in, current release version, product name, and private or public.
 2. what is render?
 	render view is not refresh the whole web page, just specified element related to js file.
+	
+	view engine: 
+		1) __dirname: code base does not dependent on current directory.
+		2) default template: EJS/Jade. comand -e would generate ejs index file.
+		3) lookup view:res.render()
+			example: ----views
+				    --index.ejs (if want to visit index.ejs, app.render('views'))
+				    --upload.ejs (if want to visit upload.ejs, app.render('views/upload')
+			note: if want to request upload.ejs but does not exist, so next node will find whether index.ejs existed or not, if not error threw out soon.
+
+	Exposure data to view:
+		1) how to send data to view? app.render('views', [object]). view received data from model, <%= property%>
+	 	 	for example: app.render('views', {id : 1, name: sample}.  view: <div><p><%=id%></p><p><%=name%></p></div>
