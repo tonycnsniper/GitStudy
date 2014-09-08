@@ -16,3 +16,13 @@
 	Exposure data to view:
 		1) how to send data to view? app.render('views', [object]). view received data from model, <%= property%>
 	 	 	for example: app.render('views', {id : 1, name: sample}.  view: <div><p><%=id%></p><p><%=name%></p></div>
+
+3. relationship among router, template, app.js, and public/js
+	different meaning:
+		router:
+		template:
+		app.js : originally that is portal of website or apps
+		js: 
+		ejs: 
+		app.configure: 
+	more thinking on items aboves, more meanings you will learn.
