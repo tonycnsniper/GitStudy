@@ -28,3 +28,13 @@ exports.form = function(request, response) {
 		title: 'Photo upload'
 	});
 }
+
+exports.list = function(request, response, next) {
+	Photo.find({}, function(err, photos) {
+		if(err) return next(err);
+		response.render('photos', {
+			title: 'Photos',
+			photos: photos
+		});
+	});
+};
