@@ -27,4 +27,4 @@
 		app.configure: 
 	more thinking on items aboves, more meanings you will learn.
 
-4. have a try 
+4. 
