@@ -27,4 +27,4 @@
 		app.configure: 
 	more thinking on items aboves, more meanings you will learn.
 
-4. Next step: debug app.js.
+4. Next step: debug app.js. 
