@@ -7,27 +7,30 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var photos = require('./routes/photos');
 
 var app = express();
-var photos = require('./routes/photos');
+
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('photos', __dirname + '/public/photos');  
+app.set('photos', path.join(__dirname ,'/public/photos'));  
 
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
+//app.use(bodyParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+//app.use('/photos', photos);
 
 app.get('/upload', photos.form);
 app.post('/upload', photos.submit(app.get('photos')));
@@ -63,5 +66,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.set('port', process.env.PORT || 3000);
 
-module.exports = app;
+var server = app.listen(app.get('port'));

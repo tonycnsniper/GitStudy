@@ -5,8 +5,8 @@ var Photo = require('../models/Photo');
 
 exports.submit = function(dir) {
 	return function(request, response, next) {
-		var image = reqest.files.photo.image;
-		var name = reqest.body.photo.name || image.name;
+		var image = request.files.photo.image;
+		var name = request.body.photo.name || image.name;
 		var path = join(dir, image.name);
 
 		fs.rename(image.path, path, function(err) {
