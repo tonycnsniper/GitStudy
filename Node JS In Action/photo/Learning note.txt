@@ -28,3 +28,5 @@
 	more thinking on items aboves, more meanings you will learn.
 
 4. Next step: debug app.js. 
+
+5. roll back to chapter 7 connect: a middleware for node.
