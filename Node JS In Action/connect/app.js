@@ -1,11 +1,51 @@
 var connect = require('connect');
+var url = require('url');
+var router = require('./middleware/router');
 var app = connect();
-app.use(logger);
+
+app.use(setup(':method :url'));
+app.use(rewrite);
 app.use('/admin', restrict)
 app.use('/admin', admin)
 app.use(logger);
 app.use(hello);
 app.listen(3000);
+app.use(router(routes));
+
+function rewrite(request, response, next) {
+	var path = url.parse(request.url).pathname;
+
+	function rewrite(request, response, next) {
+		var match = path.match(/^\/blog\/posts\/(.+)/);
+		if(match) {
+			findPostIdBySlug(match[1],function(err, id) {
+				if(err) return next(err);
+				if(!id) return next(new Error('User not Found'));
+				reqest.url = '/blog/posts/' + id;
+				next();
+			});
+		} else {
+			next();
+		}
+	}
+}
+
+
+var routes = {
+	GET: {
+		'/users': function(request, response) {
+			response.end('tobi, loki, ferret');
+		},
+		'/user/:id': function(request, response, id) {
+			response.end('user' + id);
+		}
+	},
+	DELETE: {
+		'/user/:id': function(request, response, id) {
+			response.end('delete user ' + id);
+		}
+	}
+};
 
 function restrict(request, response, next){
 	var authorization = request.headers.authorization;
@@ -35,6 +75,20 @@ function admin(request, response, next) {
 			response.setHeader('Content-Type', 'application/json');
 			response.end(JSON.stringify(['tobi', 'loki', 'jane']));
 			break;
+	}
+}
+
+function setup(format) {
+	var regexp = /:(\w+)/g;
+
+	return function logger(request, response, next) {
+		var str = format.replace(regexp, function(match, property) {
+			return request[property];
+		});
+
+		console.log(str);
+
+		next();
 	}
 }
 
