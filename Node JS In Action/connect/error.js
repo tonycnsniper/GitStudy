@@ -1,8 +1,11 @@
 var connect = require('connect');
+
+process.env.NODE_ENV = 'development';
+
 var app = connect();
 
 app.use(error)
-app.use(errorHandler())
+app.use(errorHandler)
 .listen(3000)
 
 function error (request, response, next) {
@@ -13,9 +16,10 @@ function error (request, response, next) {
 	next();
 }
 
-function errorHandler() {
+function errorHandler(err, request, response, next) {
 	var env = process.env.NODE_ENV || 'development';
-	return function(err, request, response, next) {
+	console.log(env.toString())
+	return function(err, request, response, next, env) {
 		response.statusCode = 500;
 
 		switch(env) {
@@ -27,4 +31,5 @@ function errorHandler() {
 				response.end('Server error');
 		}
 	}
+	next();
 }
