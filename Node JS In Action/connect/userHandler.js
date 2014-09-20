@@ -18,9 +18,10 @@ function hello(request, response, next) {
 	} else {
 		next();
 	}
-	next();
+	//console.log('I am here!');
 }
 
+function users(request, response, next) {
 var db = {
 	users : [
 		{ name : 'tobi' },
@@ -28,19 +29,25 @@ var db = {
 		{ name : 'jane' }
 	]
 };
-
-function users(request, response, next) {
 	var match = request.url.match(/^\/user\/(.+)/)
+	console.log('111'+match);
 	if(match) {
-		console.log(match[1]);
-		console.log(db.users[match[1]]);
-		var user = db.users[match[1]];
+		var user;
+		for (var i = 0; i < db.users.length; i++) {
+			console.log(db.users[i].name +'********'+match[1]);
+			if(db.users[i].name == match[1]) {
+				user = db.users[i];
+			}
+		};
+		
+		console.log('222'+user);
 		if(user) {
 			response.setHeader('Content-Type', 'application/json');
 			response.end(JSON.stringify(user));
 		} else {
 			var err = new Error('User not found');
 			err.notFound = true;
+			console.log('I am here')
 			next(err);
 		}
 	} else {
@@ -49,7 +56,7 @@ function users(request, response, next) {
 }
 
 function pets(request, response, next) {
-	if(request.url.match('/^\/pet\/(.+)/')) {
+	if(request.url.match(/^\/pet\/(.+)/)) {
 		foo();
 	} else {
 		next();
