@@ -1,1 +1,5 @@
 1. start to learn chapter 7
+
+	Middleware for parsing cookies: Tuesday	morning learning
+	Middleware for request bodies: 
+	Middleware for query strings;
