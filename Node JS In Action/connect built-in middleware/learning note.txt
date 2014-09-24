@@ -4,3 +4,13 @@
 					cookie under request....
 	Middleware for request bodies: 
 	Middleware for query strings;
+
+
+
+parsing cookies: 
+	serverals cookies supported by note:
+		1. regular cookie
+		2. signed cookie
+		3. special JSON cookie
+	how to use: 
+		e.g. response.setHeader('Set-Cookie', [content])
