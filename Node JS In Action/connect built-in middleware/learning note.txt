@@ -14,3 +14,5 @@ parsing cookies:
 		3. special JSON cookie
 	how to use: 
 		e.g. response.setHeader('Set-Cookie', [content])
+
+body parsing: process input from user included files uploaded, text input, and so on.
