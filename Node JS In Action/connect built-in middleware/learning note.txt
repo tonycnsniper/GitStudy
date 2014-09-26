@@ -16,3 +16,7 @@ parsing cookies:
 		e.g. response.setHeader('Set-Cookie', [content])
 
 body parsing: process input from user included files uploaded, text input, and so on.
+
+limit: to limit exceed size object upload. different type limit different size
+
+query parsering: 
