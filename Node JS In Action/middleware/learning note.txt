@@ -1,0 +1,22 @@
+1. start to learn chapter 7
+
+	Middleware for parsing cookies: Tuesday	morning learning
+					cookie under request....
+	Middleware for request bodies: 
+	Middleware for query strings;
+
+
+
+parsing cookies: 
+	serverals cookies supported by note:
+		1. regular cookie
+		2. signed cookie
+		3. special JSON cookie
+	how to use: 
+		e.g. response.setHeader('Set-Cookie', [content])
+
+body parsing: process input from user included files uploaded, text input, and so on.
+
+limit: to limit exceed size object upload. different type limit different size
+
+query parsering: download query-parser package first
